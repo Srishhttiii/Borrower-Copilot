@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Borrower Copilot</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>Borrower Copilot</h1>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="input-band" aria-label="Borrower questions">
+        <div class="section-title">
+          <div>
+            <h2>We help you to make better decisions.</h2>
+          </div>
+          <p>Fill the details correctly. You can use a sample example (eg, Priya, Ravi, Anita) for better understanding.</p>
+        </div>
+
+        <div class="demo-row" aria-label="Example borrowers">
+          <button type="button" id="reset">Reset form</button>
+          <button type="button" data-demo="priya">Priya</button>
+          <button type="button" data-demo="ravi">Ravi</button>
+          <button type="button" data-demo="anita">Anita</button>
+        </div>
+
+        <form id="borrower-form">
+          <fieldset class="question-group">
+            <legend>Borrower Details</legend>
+            <div class="form-grid compact">
+              <label>
+                <span>Borrower name</span>
+                <input id="name" name="name" placeholder="Name" autocomplete="off" />
+              </label>
+
+              <label>
+                <span>Age</span>
+                <input id="age" name="age" type="number" min="18" max="70" placeholder="Age" />
+              </label>
+
+              <label>
+                <span>City tier</span>
+                <select id="cityTier" name="cityTier">
+                  <option value="" selected>Choose city tier</option>
+                  <option value="metro">Metro / Tier 1</option>
+                  <option value="tier2">Tier 2</option>
+                  <option value="smaller">Smaller city / rural</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Employment type</span>
+                <select id="employment" name="employment">
+                  <option value="" selected>Choose employment</option>
+                  <option value="salaried">Salaried</option>
+                  <option value="self">Self-employed</option>
+                  <option value="informal">Informal / gig</option>
+                </select>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="question-group">
+            <legend>Income and Expenditure</legend>
+            <div class="form-grid">
+              <label>
+                <span>Monthly income</span>
+                <input id="income" name="income" type="number" min="0" step="1000" placeholder="e.g. 50000" />
+              </label>
+
+              <label>
+                <span>Other dependable household income</span>
+                <input id="otherIncome" name="otherIncome" type="number" min="0" step="1000" placeholder="Optional" />
+              </label>
+
+              <label>
+                <span>Existing monthly EMIs</span>
+                <input id="existingEmi" name="existingEmi" type="number" min="0" step="500" placeholder="Current EMI total" />
+              </label>
+
+              <label>
+                <span>Household expenses</span>
+                <input id="expenses" name="expenses" type="number" min="0" step="1000" placeholder="Rent, food, school, travel" />
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="question-group">
+            <legend>Loan Request</legend>
+            <div class="form-grid">
+              <label>
+                <span>Loan purpose</span>
+                <select id="purpose" name="purpose">
+                  <option value="" selected>Choose loan purpose</option>
+                  <option value="personal">Personal / ceremony</option>
+                  <option value="business">Business asset or working capital</option>
+                  <option value="twoWheeler">Two-wheeler</option>
+                  <option value="gold">Gold-backed</option>
+                  <option value="lap">Loan against property</option>
+                  <option value="home">Home purchase</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Amount wanted</span>
+                <input id="amountWanted" name="amountWanted" type="number" min="0" step="10000" placeholder="Loan amount" />
+              </label>
+
+              <label>
+                <span>Preferred tenure</span>
+                <select id="tenure" name="tenure">
+                  <option value="" selected>Choose tenure</option>
+                  <option value="12">12 months</option>
+                  <option value="24">24 months</option>
+                  <option value="36">36 months</option>
+                  <option value="48">48 months</option>
+                  <option value="60">60 months</option>
+                  <option value="84">84 months</option>
+                  <option value="120">10 years</option>
+                  <option value="180">15 years</option>
+                </select>
+              </label>
+
+              <label id="collateralField">
+                <span>Collateral value</span>
+                <input id="collateral" name="collateral" type="number" min="0" step="10000" placeholder="If secured" />
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="question-group">
+            <legend>Risk Signals</legend>
+            <div class="form-grid">
+              <label>
+                <span>Income stability</span>
+                <select id="stability" name="stability">
+                  <option value="" selected>Choose stability</option>
+                  <option value="stable">Stable 2+ years</option>
+                  <option value="mixed">Mixed / seasonal</option>
+                  <option value="volatile">Volatile or recently disrupted</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Variable income share</span>
+                <select id="variableShare" name="variableShare">
+                  <option value="" selected>Choose share</option>
+                  <option value="low">0-20%</option>
+                  <option value="medium">20-50%</option>
+                  <option value="high">50%+</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Emergency savings</span>
+                <select id="savings" name="savings">
+                  <option value="" selected>Choose savings buffer</option>
+                  <option value="unknown">I do not know</option>
+                  <option value="none">Less than 1 month</option>
+                  <option value="some">1-3 months</option>
+                  <option value="good">3+ months</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Credit score</span>
+                <input id="creditScore" name="creditScore" type="number" min="300" max="900" placeholder="Unknown is ok" />
+              </label>
+
+              <label>
+                <span>Recent bounce / delinquency</span>
+                <select id="bounces" name="bounces">
+                  <option value="" selected>Choose repayment history</option>
+                  <option value="none">None in 12 months</option>
+                  <option value="minor">One minor delay</option>
+                  <option value="recent">Recent bounce or overdue</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Quote already received</span>
+                <input id="quotedRate" name="quotedRate" type="number" min="0" max="60" step="0.1" placeholder="Optional rate %" />
+              </label>
+            </div>
+          </fieldset>
+        </form>
+      </section>
+
+      <section class="results-band" aria-live="polite">
+        <div class="section-title">
+          <div>
+            <h2>Result</h2>
+          </div>
+          <p id="confidence-line"></p>
+        </div>
+
+        <div class="metrics">
+          <article>
+            <span>Verdict</span>
+            <strong id="verdict"></strong>
+            <p id="verdictWhy"></p>
+          </article>
+          <article>
+            <span>Lender may sanction</span>
+            <strong id="lenderAmount"></strong>
+            <p id="lenderWhy"></p>
+          </article>
+          <article>
+            <span>Safe amount</span>
+            <strong id="safeAmount"></strong>
+            <p id="safeWhy"></p>
+          </article>
+          <article>
+            <span>Fair rate band</span>
+            <strong id="rateBand"></strong>
+            <p id="rateWhy"></p>
+          </article>
+          <article>
+            <span>All-in APR</span>
+            <strong id="aprBand"></strong>
+            <p id="aprWhy"></p>
+          </article>
+          <article>
+            <span>EMI ceiling</span>
+            <strong id="emiCeiling"></strong>
+            <p id="emiWhy"></p>
+          </article>
+        </div>
+
+        <div class="tradeoff">
+          <h3>Tenure Trade-Off</h3>
+          <div id="tenureTable" class="tenure-table"></div>
+        </div>
+
+        <div class="negotiation-card" id="card">
+          <div>
+            <p class="eyebrow">Negotiation Card</p>
+            <h2 id="cardTitle"></h2>
+          </div>
+          <p id="cardVerdict"></p>
+          <div class="card-grid">
+            <div><span>Ask for</span><strong id="cardAsk"></strong></div>
+            <div><span>Do not cross</span><strong id="cardCap"></strong></div>
+            <div><span>Fair rate</span><strong id="cardRate"></strong></div>
+            <div><span>APR check</span><strong id="cardApr"></strong></div>
+          </div>
+          <p id="stressCase" class="stress"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Built for borrower-side negotiation. The rules are documented separately so every number can be defended.
+    </footer>
+
+    <script src="rules.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
