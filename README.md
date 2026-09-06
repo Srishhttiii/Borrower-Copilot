@@ -1,6 +1,11 @@
 # Borrower Copilot
 
-A local, no-login self-assessment for Indian borrowers. It answers:
+Borrower Copilot is a web app that helps Indian borrowers understand a loan before accepting it.
+It estimates what a lender may sanction, what the borrower can safely carry, and what rate range is fair.
+The app turns borrower inputs into clear outputs, stress checks, and a negotiation card.
+It is designed as a practical borrower-side tool, not a credit bureau or lender underwriting model.
+
+It answers:
 
 - Should I borrow at all?
 - How much might a lender sanction?
